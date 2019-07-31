@@ -19,7 +19,7 @@ export class ApiService {
 
   }
   getAlluser(): Observable<any> {
-    return this.http.get(`http://localhost:3000/alluser`).map((res: Response) => {
+    return this.http.get(`https://1teamapi.azurewebsites.net/alluser`).map((res: Response) => {
       return res.json();
     });
   }
