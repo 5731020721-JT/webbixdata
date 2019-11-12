@@ -1,0 +1,7 @@
+{
+    "/getmonth": {
+      "target": "http://1teamapi.azurewebsites.net",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }

@@ -17,8 +17,15 @@ export class PageTwoComponent implements OnInit {
   // chart: Chart;
   interval: any;
   interval2: any;
+  public price00 = 0;
+  public coupon = 0;
+  public UID = "00";
+  public UID2 = "01";
+  public gender = "male"
   public userName;
   public image;
+  public lenght;
+  public lenght2;
   public userID;  
   public churn;
   public total;  
@@ -43,6 +50,8 @@ export class PageTwoComponent implements OnInit {
   public data33= [];  
   public data44= [];  
   public busket2 = [];
+  public OfferNew = [];
+  public num;
   LineChart:any;
   constructor(private api: ApiService) { }
   ngOnInit() {
@@ -61,30 +70,53 @@ export class PageTwoComponent implements OnInit {
     this.interval = setInterval(() => {
       this.api.getAlluser().subscribe((data) => { 
         console.log(data)
+        this.UID = data[0].id
         this.userName = data[0].firstname;
         this.image = data[0].image;
         this.userID = data[0].id;
         this.churn = data[0].churn;
+        this.gender = data[0].gender;
        });
   }, 3000);
 
-  this.interval2 = setInterval(() => {  
-    var lbk = 0;
+  this.interval2 = setInterval(() => { 
+  
+    var lbk = [];
     this.api.getBasket(this.userID).subscribe((data) => { 
-      console.log(data)
-      var num = data.length;
+      //console.log("BUSKETTT" + JSON.stringify(data))
+      
+       this.num = data.length;
 
         
-        
-        if(num > 3){
-          this.busket2 = data.slice(num-3); 
+    
+      //  data.forEach(element => {
+      //     lbk.push(element.update_time)
+      //  });
+
+       data.sort(function (a, b) {
+        if (a.update_time > b.update_time) {
+            return -1;
+        }
+        if (b > a) {
+            return 1;
+        }
+        return 0;
+    });
+  //  console.log("ABA" + JSON.stringify(data));
+
+
+       // find max update time and pop index max update time
+     // console.log(this.sortbasket(data));
+
+
+
+
+        if(this.num > 2){
+          this.busket2 = data.slice(0,2)
+         // console.log("AAA" + this.busket2.length)
         }else{
           this.busket2 = data;
         }
-       
-        
-        
-        
        
 
 
@@ -97,29 +129,54 @@ export class PageTwoComponent implements OnInit {
 
   }
 
+  
+  GetMonth(URL){
+    this.api.getMonth(URL).subscribe((data) => {
+         this.price00 = data.round_500;
+         this.coupon = data.coupon;
+    })
+}
+
+  
+
  GetPicture(){
-  this.pic2 = [];
+
+  if(this.UID != this.UID2){
+    this.GetMonth(this.image)
+    this.busket2 = [];
+    this.pic2 = [];
+    this.UID2 = this.UID
+    console.log('1212312121')
+   }   
+ 
   this.total = 0;
   this.Dtotal = 0;
   this.Gtotal = 0;
     this.basket.forEach(element => {
       this.total += Number((element.price*element.number)  - (element.price*element.promo));
-      if(this.churn){
-        this.Dtotal = Number(this.total*(60/100));
-        this.Gtotal = Number(this.total - (this.total*(60/100)));
+      if(this.total >= this.price00){
+        this.Dtotal = this.coupon
+        this.Gtotal = Number(this.total - this.coupon);
       }else{
-        this.Dtotal = Number(this.total*(40/100));
-        this.Gtotal = Number(this.total - (this.total*(40/100)));
+        this.Dtotal = 0;
+        this.Gtotal = Number(this.total);
       }
       
 });
 
  // alert(JSON.stringify(this.busket2))
+ //var i = 0
+ 
+  
+ this.pic2 = [];
  this.busket2.forEach(element => {
-  this.pic.forEach(pic2 =>{
+  this.pic.forEach(pic3 =>{
+ 
     //   alert(element.item_code + "  " + pic2.item_code)
-         if(element.item_code == pic2.item_code){
-           this.pic2.push(pic2.item_pic)
+         if(element.item_code == pic3.itemcode){
+           this.pic2.push(pic3.pic_item)
+          // console.log("MM" + pic3.itemcode + "i: " + i)
+         //  i++;
          }
      })
   });
@@ -127,6 +184,7 @@ export class PageTwoComponent implements OnInit {
 
 GetOffer(){
   //this.OfItem = [];
+  this.OfferNew = [];
   var ltime = this.basket[0].update_time;
   this.OfItem = this.basket[0].item_code;
   this.basket.forEach(element => {
@@ -140,26 +198,27 @@ GetOffer(){
 
   
   
-  this.api.getOffer(this.OfItem).subscribe((data) => { 
-  
+  this.api.getOffer(this.OfItem,this.gender).subscribe((data) => { 
+   console.log("OFFER " +  this.OfItem)
     if(data.length > 0  && this.OfItem != this.id){
     this.id = this.OfItem;
     this.Offer = data;
-    
-    this.getChartData(data);
+    this.OfferNew.push({"itemcode":data[0].offer_1},{"itemcode": data[0].offer_2})
+    console.log("OFFER2  " +data[0].offer_2)
+    this.getChartData(this.OfferNew);
     var count = 0;
     var lowestprice;
     this.lowestprice = []
     
         
-    this.Offer.forEach(element => {
+    this.OfferNew.forEach(element => {
       lowestprice = 100000;
         var A = [];
     //alert(this.items)
       this.items.forEach(element2 => {
   
         
-       if(element2.item_id == element.item_code){
+       if(element2.item_id == element.itemcode){
           //  alert(element.item_code + "  " + element2.retail_name)
           A.push({"retailname":element2.retail_name,"price":element2.price})
           
@@ -175,10 +234,12 @@ GetOffer(){
       this.lowestprice.push(lowestprice);  
    
       this.Offer.push(A);
-      alert(JSON.stringify(  this.Offer))
+     
      
       console.log(this.Offer)
     });
+    this.lenght = this.Offer[1].length;
+    this.lenght2 = this.Offer[2].length;
   
   }
 
@@ -198,9 +259,12 @@ getChartData(offer)
   this.data22= [];  
   this.data33= [];  
   this.data44= [];  
-    this.api.getChart1(offer[0].item_code).subscribe((data) => { 
+    this.api.getChart1(offer[0].itemcode).subscribe((data) => { 
          data[0].date.forEach(element => {
-           var date = new Date(element).getDate();
+           var date = new Date(element).getDate()+1;
+           if(date == 32){
+             date = 1;
+           }
           this.date.push(date)      
          });
          data[0].bigc.forEach(element => {
@@ -213,12 +277,19 @@ getChartData(offer)
           this.data3.push(element)      
          });                  
          data[0].s1.forEach(element => {
-          this.data4.push(element)      
+          this.data4.push(element)
+         //
+         
+         //alert(element)      
          });
      
-         this.api.getChart2(offer[1].item_code).subscribe((data) => { 
+         this.api.getChart2(offer[1].itemcode).subscribe((data) => { 
+           
           data[0].date.forEach(element => {
-            var date = new Date(element).getDate();
+            var date = new Date(element).getDate()+1;
+            if(date == 32){
+              date = 1;
+            }
            this.date2.push(date)      
           });
           data[0].bigc.forEach(element => {
@@ -235,7 +306,7 @@ getChartData(offer)
           });
 
           this.Chart();  
-         this.Chart2();
+          this.Chart2();
       //   alert(this.)
  
   })
@@ -254,33 +325,34 @@ data:{
  datasets: [{
    label: 'BigC',
    data: this.data1,
-   fill:false,
+   fill: "B",
    lineTension: 0.2,
-   borderColor:"green",
+   borderColor:"gold",
    borderWidth: 1
  },
  {
    label: 'Lotus',
    data: this.data2,
-   fill:false,
+   fill:"L",
    lineTension: 0.2,
-   borderColor:"blue",
+   borderColor:"#06BE78",
    borderWidth: 1
  },
  {
    label: 'Makro',
    data: this.data3,
-   fill:false,
+   fill:"M",
    lineTension: 0.2,
-   borderColor:"red",
+   borderColor: "#E30009",
    borderWidth: 1
  },
  {
    label: 'S1',
    data: this.data4,
-   fill:false,
+   fill:"S",
    lineTension: 0.2,
-   borderColor:"gold",
+   borderColor:"#0066E3",
+   
    borderWidth: 3
  }
 ]    
@@ -312,33 +384,34 @@ Chart2(){
   datasets: [{
     label: 'BigC',
     data: this.data11,
-    fill:false,
-    lineTension: 0.2,
-    borderColor:"green",
-    borderWidth: 1
+    fill:"B",
+    lineTension: 1.0,
+    borderColor:"gold",
+    borderWidth: 1,
+    
   },
   {
     label: 'Lotus',
     data: this.data22,
-    fill:false,
+    fill:"L",
     lineTension: 0.2,
-    borderColor:"blue",
+    borderColor:"#06BE78",
     borderWidth: 1
   },
   {
     label: 'Makro',
     data: this.data33,
-    fill:false,
+    fill:"M",
     lineTension: 0.2,
-    borderColor:"red",
+    borderColor:"#E30009",
     borderWidth: 1
   },
   {
     label: 'S1',
     data: this.data44,
-    fill:false,
+    fill:"S",
     lineTension: 0.2,
-    borderColor:"gold",
+    borderColor:"#0066E3",
     borderWidth: 3
   }
  ]    

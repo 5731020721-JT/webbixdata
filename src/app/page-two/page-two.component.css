@@ -6,6 +6,7 @@
  .offer{
     margin-left: 20px;
     width: 48%;
+    height: 30%;
  } 
 
  .spe_offer{
@@ -28,52 +29,78 @@
      background-color: #f7f7f7;
      
  }
+ .bk3{
+    margin-left:15px;
+    margin-top: 10px;
+    width: 98%;
+    padding-top: 10px;
+    border-radius: 1px;
+    background-color: #f7f7f7;
+    
+}
+ .bk2{
+    margin-left:3px;
+    margin-top: 10px;
+    width: 15%;
+    border-radius: 11px;
+    background-color: #0049A2;
+    
+}
  .p1{
     margin-left:35%;
     margin-top: 10px;
     font-weight: bold;
-    padding: 15px;
+    padding: 7px;
     color: #778080;
 }
 .p2{
     margin-left:15px;
     margin-top: 10px;
-    border-radius: 8px;
+    margin-bottom: 5px;
+    border-radius: 8px; 
     background-color: #778080;
     font-weight: bold;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
     color: #FFFFFF;
 }
 .p3{
     margin-left:15px;
     margin-top: 10px;
     font-weight: bold;
-    padding: 15px;
+    padding: 7px;
     color: #e2006a;
 }
 .p4{
     margin-left:15px;
     margin-top: 10px;
+    margin-bottom: 5px;
     border-radius: 8px;
     background-color: #e2006a;
     font-weight: bold;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
     color: #FFFFFF;
 }
 .p5{
     margin-left:15px;
     margin-top: 10px;
     font-weight: bold;
-    padding: 15px;
+    padding:  7px;
     color: #0058c4;
 }
 .p6{
     margin-left:15px;
     margin-top: 10px;
+    margin-bottom: 5px;
     border-radius: 8px;
     background-color: #0058c4;
     font-weight: bold;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
     color: #FFFFFF;
 }
  

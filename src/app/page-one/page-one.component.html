@@ -1,58 +1,78 @@
 <div class="container-fluid" >
-  <div class="row">
+  <div class="row" *ngIf="men">
     <div class="col-xl-3" >
-        <img class="img-fluid" style="transform:rotate(90deg);height: -10%; width: -10%" src="{{image}}"  alt="Card image" >
+        <img class="img-fluid"  style="filter: opacity(0.5) drop-shadow(0 0 0 blue);height: 45%;width: 115%;transform:rotate(-90deg)" src="{{image}}"  alt="Card image" >
         <div class="welcome">
-           <div class="Rectangle-32">ยินดีต้อนรับ คุณ{{ userName }}</div> 
+           <div class="Rectangle-32">ยินดีต้อนรับคุณ</div>
+           <div class="Rectangle-32" style="font-size:30px;">{{ userName }}</div> 
         </div>
-        <div class="sub-welcome1">
-            เราขอเสนอส่วนลดพิเศษ
-        </div>
+
+        <img class="img-fluid" src="assets/promotion.png" style="width: 70%; height: 5%;margin-left: 15%;margin-top: 10px;" >
+  
+        
         <div class="sub-welcome2"> 
-            <div *ngIf="churn">60%</div>
-            <div *ngIf="!churn">40%</div>
+            <div >  ช้อปครบ  {{price00 | number}} บาท</div>
         </div>
+      <img src="assets/foryou.png" style="width: 50px;height:50px;margin-left: 45px;margin-top: 20px;" >
+         
         <div class="sub-welcome3">
-            ทุกรายการ จากราคาปกติ ขอให้สนุกกับการเลือกซื้อสินค้าของเราค่ะ
+           รับส่วนลดทันที !  
+           <table style="margin-left: 50px; margin-top: -7px;">
+             <tr>
+                   <td style="font-size: 30px;padding-right: 5px;"><b>{{ coupon | number }}</b> </td>
+                   <td >บาท</td>
+            </tr>
+          </table>
+
         </div>
+        
     </div>
     
      
     <div class="col-xl-9" style="width:50%; background-image: url('assets/Design2/bg_all.png'); background-size: 100%; ">
       <div style="background-color: #FFFFFF; width: 101%">
-          <img class="card-img-top" style="width:50px; padding-top: 15px" src="assets/Design/Bullet.png" alt="Card image" >
-          <br><span style="font-size:45px; color: #188105;">Shopping Experience Center</span>
-          <img class="card-img-top" style="width:65px; margin-left: 20px" src="assets/Design/busket.png" alt="Card image" >
+          <img class="card-img-top" style="width:50px; padding-top: 5px" src="assets/Design/Bullet.png" alt="Card image" >
+          <br><span style="font-size:24px; color: #188105;">Shopping Experience Center</span>
+          <img class="card-img-top" style="width:40px; margin-left: 20px" src="assets/Design/busket.png" alt="Card image" >
           <br>
           
       </div>
       <table style="width: 100%; ">
           <tr style="vertical-align:middle; text-align: center;">
-              <td><img class="card-img-top" style="width:130px;" src="assets/Design/1001052.png" alt="Card image" ></td>
-              <td><img class="card-img-top" style="width:160px;  " src="assets/Design/1701063.png" alt="Card image" ></td>
-              <td><img class="card-img-top" style="width:140px; " src="assets/Design/1901012.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:130px;" src="assets/men/prod1.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:130px;  " src="assets/men/prod2.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:140px; " src="assets/men/prod3.png" alt="Card image" ></td>
               
           </tr>
           <tr>
               <td><div class="card"  >
                    <div class="card-body">
                     <table width="100%"> 
-                      <tr><td colspan="2" style="font-size: 15px">หงส์ทองข้าวหอมมะลิใหม่</td>                         
-                          <td rowspan="3"><img class="card-img-top" src="assets/qrcode/1001052.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                      <tr><td colspan="2" style="font-size: 15px">พริกไทยป่น</td>                         
+                          <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod1.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                       </tr>
-                      <tr><td colspan="2" style="font-size: 14px">ต้นฤดู 100% ขนาด 5 กิโลกรัม</td></tr>
-                      <tr><td ><b>{{ itemprice[0] }} บาท</b></td></tr>
+                      <tr><td colspan="2" style="font-size: 14px">ตรามือ 500 ก.</td></tr>
+                      <tr><td >
+                          <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[0] == 1)">{{ itemprice[0] * (1.1) | number : '1.2-2'}} บาท</b>
+                          <b  *ngIf="(upsale[0] == 0)">{{ itemprice[0] }} บาท</b>
+                      </td></tr>
                     </table>
                    </div>
                 </div></td>
               <td><div class="card" >  
                     <div class="card-body">
                         <table width="100%">
-                            <tr><td colspan="2" style="font-size: 15px">ซีพีเอฟ ไข่ไก่ เบอร์ 1 </td>
-                                <td rowspan="3"><img class="card-img-top" src="assets/qrcode/1701063.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
-                            </tr>
-                            <tr><td colspan="2" style="font-size: 14px">10 ฟอง 1 แพ็ค</td></tr>
-                            <tr><td ><b>{{ itemprice[1] }} บาท</b></td></tr>
+                            <tr><td colspan="2" style="font-size: 15px">โรซ่า</td>
+                                <!-- <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod2.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td> -->
+                                <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod2.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                             
+                                
+                              </tr>
+                            <tr><td colspan="2" style="font-size: 14px">ซอสพริก 300 ก.</td></tr>
+                            <tr><td >
+                                <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[1] == 1)">{{ itemprice[1] * (1.1) | number : '1.2-2' }} บาท</b>
+                              <b  *ngIf="(upsale[1] == 0)">{{ itemprice[1] }} บาท</b>
+                              </td></tr>
                         </table>
                     </div>
                   </div>
@@ -60,11 +80,14 @@
               <td><div class="card" >
                     <div class="card-body">
                         <table width="100%">
-                            <tr><td colspan="2" style="font-size: 15px">โฟร์โมสต์ นมยูเอชที รสช็อกโกแลต </td>
-                                <td rowspan="3"><img class="card-img-top" src="assets/qrcode/1901012.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                            <tr><td colspan="2" style="font-size: 15px">เด็กสมบูรณ์ </td>
+                                <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod3.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                             </tr>
-                            <tr><td colspan="2" style="font-size: 14px">ขนาด 225 มิลลิลิตร แพ็ค 36</td></tr>
-                            <tr><td ><b>{{ itemprice[2] }} บาท</b></td></tr>
+                            <tr><td colspan="2" style="font-size: 14px">เต้าเจี้ยวสูตร 1 ขนาด 800 ก.</td></tr>
+                            <tr><td >
+                              <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[2] == 1)">{{ itemprice[2] * (1.1) | number : '1.2-2' }} บาท</b>
+                              <b  *ngIf="(upsale[2] == 0)">{{ itemprice[2] }} บาท</b>
+                            </td></tr>
                         </table>
                     </div>
                   </div>
@@ -76,20 +99,22 @@
       <div class="row">
         <table style="width: 97%; margin-left: 15px; ">
           <tr style="vertical-align:middle; text-align: center;">
-              <td><img class="card-img-top" style="width:120px;  " src="assets/Design/2101572.png" alt="Card image" ></td>
-              <td><img class="card-img-top" style="width:30px " src="assets/Design/3701164.png" alt="Card image" ></td>
-              <td><img class="card-img-top" style="width:120px; padding: 20px 0 10px 0; " src="assets/Design/4101062.png" alt="Card image" ></td>
-              <td><img class="card-img-top" style="width:110px;  " src="assets/Design/4102038.png" alt="Card image" ></td>
-          </tr>
+              <td><img class="card-img-top" style="width:120px;  " src="assets/men/prod4.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:120px " src="assets/men/prod5.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:120px; padding: 20px 0 10px 0; " src="assets/men/prod6.png" alt="Card image" ></td>
+           </tr>
           <tr>
               <td><div class="card" >
                   <div class="card-body">
                       <table width="100%">
-                          <tr><td colspan="2" style="font-size: 15px">ซีพี สปาเก็ตตี้ไก่สับ  </td>
-                            <td rowspan="3"><img class="card-img-top" src="assets/qrcode/2101572.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                          <tr><td colspan="2" style="font-size: 15px">ปรุงทิพย์ </td>
+                            <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod4.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                           </tr>
-                          <tr><td colspan="2" style="font-size: 14px">ขนาด 250 กรัม 3 ซอง</td></tr>
-                          <tr><td ><b>{{ itemprice[3] }} บาท</b></td></tr>
+                          <tr><td colspan="2" style="font-size: 14px">เกลือบริโภคเสริมไอโอดีน 1,000 ก.</td></tr>
+                          <tr><td >
+                              <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[3] == 1)">{{ itemprice[3] * (1.1) | number : '1.2-2' }} บาท</b>
+                              <b  *ngIf="(upsale[3] == 0)">{{ itemprice[3] }} บาท</b>
+                          </td></tr>
                       </table>               
                   </div>
               </div>
@@ -97,11 +122,14 @@
             <td><div class="card"  >
                   <div class="card-body" >
                       <table width="100%">
-                          <tr><td colspan="2" style="font-size: 15px">เบนโตะปลาเส้น ซีอิ้ว </td>
-                            <td rowspan="3"><img class="card-img-top" src="assets/qrcode/3701164.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                          <tr><td colspan="2" style="font-size: 15px">แม่ครัว</td>
+                            <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod5.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                           </tr>
-                          <tr><td colspan="2" style="font-size: 14px">15 กรัม </td></tr>
-                          <tr><td ><b>{{ itemprice[4] }} บาท</b></td></tr>
+                          <tr><td colspan="2" style="font-size: 14px">ซอสหอยนางรม 600 มล. </td></tr>
+                          <tr><td >
+                              <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[4] == 1)">{{ itemprice[4] * (1.1) | number : '1.2-2' }} บาท</b>
+                              <b  *ngIf="(upsale[4] == 0)">{{ itemprice[4] }} บาท</b>
+                          </td></tr>
                       </table>
                   </div>
                 </div>
@@ -109,47 +137,42 @@
               <td><div class="card"  >
                   <div class="card-body">
                    <table width="100%">
-                     <tr><td colspan="2" style="font-size: 15px">แฟนต้าน้ำแดง </td>
-                         <td rowspan="3"><img class="card-img-top" src="assets/qrcode/4101062.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     <tr><td colspan="2" style="font-size: 15px">ทาบาสโก้ </td>
+                         <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod6.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                      </tr>
-                     <tr><td colspan="2" style="font-size: 14px">1.25 ลิตร</td></tr>
-                     <tr><td ><b>{{ itemprice[5] }} บาท</b></td></tr>
+                     <tr><td colspan="2" style="font-size: 14px">ซอสพริก 600 มล.</td></tr>
+                     <tr><td >
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[5] == 1)">{{ itemprice[5] * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[5] == 0)">{{ itemprice[5] }} บาท</b>
+                     </td></tr>
                    </table>
                   </div>
                </div></td>
-               <td><div class="card"  >
-                  <div class="card-body">
-                   <table width="100%">
-                     <tr><td colspan="2" style="font-size: 15px">เอเวียงน้ำแร่ธรรมชาติ </td>
-                         <td rowspan="3"><img class="card-img-top" src="assets/qrcode/4102038.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
-                     </tr>
-                     <tr><td colspan="2" style="font-size: 14px">500 ซีซี </td></tr>
-                     <tr><td ><b>{{ itemprice[6] }} บาท</b></td></tr>
-                   </table>
-                  </div>
-               </div></td>
-           
           </tr>
         </table>
       </div>
       <div class="row">
           <table style="width: 97%; margin-left: 15px; ">
             <tr style="vertical-align:middle; text-align: center;">
-                <td><img class="card-img-top" style="width:120px" src="assets/Design/4104376.png" alt="Card image" ></td>
-                <td><img class="card-img-top" style="width:100px" src="assets/Design/4105003.png" alt="Card image" ></td>
-                <td><img class="card-img-top" style="width:125px" src="assets/Design/5604004.png" alt="Card image" ></td>
-                <td><img class="card-img-top" style="width:150px" src="assets/Design/7602156.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:120px" src="assets/men/prod7.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:100px" src="assets/men/prod8.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:125px" src="assets/men/prod9.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:150px" src="assets/men/prod10.png" alt="Card image" ></td>
             </tr>
             <tr>
                  <td><div class="card"  >
                     <div class="card-body">
                      <table width="100%">
-                       <tr><td colspan="2" style="font-size: 15px">น้ำแอปเปิ้ล 100% มาลี </td>
-                        <td rowspan="3"><img class="card-img-top" src="assets/qrcode/4104376.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                       <tr><td colspan="2" style="font-size: 15px">วุ้นเส้นสด  </td>
+                        <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod7.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                        </tr>
-                       <tr><td colspan="2" style="font-size: 14px">1 ลิตร </td></tr>
+                       <tr><td colspan="2" style="font-size: 14px">ตรากิเลนคู่ 200 ก. </td></tr>
                        <tr>
-                         <td ><b>{{ itemprice[7] }} บาท</b></td>
+                         <td >
+                           
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[6] == 1)">{{ itemprice[6] * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[6] == 0)">{{ itemprice[6] }} บาท</b>
+                         </td>
                        </tr>
                      </table>
                     </div>
@@ -157,33 +180,45 @@
                  <td><div class="card"  >
                     <div class="card-body">
                      <table width="100%">
-                       <tr><td colspan="2" style="font-size: 15px">ชาลิปตันไอซ์ที รสเลมอน  </td>
-                           <td rowspan="3"><img class="card-img-top" src="assets/qrcode/4105003.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                       <tr><td colspan="2" style="font-size: 15px">ทิปโก้ </td>
+                           <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod8.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                        </tr>
-                       <tr><td colspan="2" style="font-size: 14px">245 มล. x 6 กระป๋อง</td></tr>
-                       <tr><td ><b>{{ itemprice[8] }} บาท</b></td></tr>
+                       <tr><td colspan="2" style="font-size: 14px">น้ำส้มแมนดาริน 100% </td></tr>
+                       <tr><td >
+                         
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[7] == 1)">{{ itemprice[7]  * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[7] == 0)">{{ itemprice[7] }} บาท</b>
+                       </td></tr>
                      </table>
                     </div>
                  </div></td>
                <td><div class="card"  >
                   <div class="card-body">
                    <table width="100%">
-                     <tr><td colspan="2" style="font-size: 15px">กรรไกรอเนกประสงค์ </td>
-                      <td rowspan="3"><img class="card-img-top" src="assets/qrcode/5604004.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     <tr><td colspan="2" style="font-size: 15px">แก้วตา</td>
+                      <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod9.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                      </tr>
-                     <tr><td colspan="2" style="font-size: 14px">1 ชิ้น </td></tr>
-                     <tr><td ><b> {{ itemprice[9] }} บาท</b></td></tr>
+                     <tr><td colspan="2" style="font-size: 14px">น้ำมะนาว 40%  </td></tr>
+                     <tr><td >
+                       
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[8] == 1)">{{ itemprice[8]  * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[8] == 0)">{{ itemprice[8] }} บาท</b>
+                     </td></tr>
                    </table>
                   </div>
                </div></td>
                <td><div class="card"  >
                   <div class="card-body">
                    <table width="100%">
-                     <tr><td colspan="2" style="font-size: 15px">สังฆทานชุดยากล่องเล็ก  </td>
-                      <td rowspan="3"><img class="card-img-top" src="assets/qrcode/7602156.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     <tr><td colspan="2" style="font-size: 15px">ซีพีเอฟ </td>
+                      <td rowspan="3"><img class="card-img-top" src="assets/qrm/prod10.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
                      </tr>
-                     <tr><td colspan="2" style="font-size: 14px">1 ชุด </td></tr>
-                     <tr><td ><b>{{ itemprice[10] }} บาท</b></td></tr>
+                     <tr><td colspan="2" style="font-size: 14px">ไข่ไก่ เบอร์ 0  </td></tr>
+                     <tr><td >
+                       
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[9] == 1)">{{ itemprice[9]  * (1.1) | number : '1.2-2'}} บาท</b>
+                        <b  *ngIf="(upsale[9] == 0)">{{ itemprice[9] }} บาท</b>
+                     </td></tr>
                    </table>
                   </div>
                </div></td>
@@ -192,4 +227,239 @@
         </div> 
   </div>
 </div>
+
+
+
+<!-- women -->
+
+  <div class="row" *ngIf="!men">
+      <div class="col-xl-3" >
+          <img class="img-fluid"  style="filter: opacity(0.5) drop-shadow(0 0 0 blue);height: 45%;width: 115%;;transform:rotate(-90deg)" src="{{image}}"  alt="Card image" >
+          <div class="welcome">
+             <div class="Rectangle-32">ยินดีต้อนรับคุณ</div>
+             <div class="Rectangle-32" style="font-size:30px;">{{ userName }}</div> 
+          </div>
+  
+          <img class="img-fluid" src="assets/promotion.png" style="width: 70%; height: 5%;margin-left: 15%;margin-top: 10px;" >
+    
+          
+          <div class="sub-welcome2"> 
+              <div >  ช้อปครบ  {{price00 | number}} บาท</div>
+          </div>
+        <img src="assets/foryou.png" style="width: 50px;height:50px;margin-left: 45px;margin-top: 20px;" >
+           
+          <div class="sub-welcome3">
+             รับส่วนลดทันที !  
+             <table style="margin-left: 50px; margin-top: -7px;">
+               <tr>
+                     <td style="font-size: 30px;padding-right: 5px;"><b>{{ coupon | number }}</b> </td>
+                     <td >บาท</td>
+              </tr>
+            </table>
+  
+          </div>
+          
+      </div>
+    
+     
+    <div class="col-xl-9" style="width:50%; background-image: url('assets/Design2/bg_all.png'); background-size: 100%; ">
+      <div style="background-color: #FFFFFF; width: 101%">
+        <img class="card-img-top" style="width:50px; padding-top: 5px" src="assets/Design/Bullet.png" alt="Card image" >
+        <br><span style="font-size:24px; color: #188105;">Shopping Experience Center</span>
+        <img class="card-img-top" style="width:40px; margin-left: 20px" src="assets/Design/busket.png" alt="Card image" >
+        <br>
+        
+    </div>
+      <table style="width: 100%; ">
+          <tr style="vertical-align:middle; text-align: center;">
+              <td><img class="card-img-top" style="width:130px;" src="assets/women/prod11.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:100px;  " src="assets/women/prod12.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:140px; " src="assets/women/prod13.png" alt="Card image" ></td>
+              
+          </tr>
+          <tr>
+              <td><div class="card"  >
+                   <div class="card-body">
+                    <table width="100%"> 
+                      <tr><td colspan="2" style="font-size: 15px">ทิพรส</td>                         
+                          <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod11.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                      </tr>
+                      <tr><td colspan="2" style="font-size: 14px">น้ำปลาจั่นเพชร ขนาด 1500 มล.</td></tr>
+                      <tr><td >
+                          <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[0] == 1)">{{ itemprice[0]  * (1.1) | number : '1.2-2' }} บาท</b>
+                          <b  *ngIf="(upsale[0] == 0)">{{ itemprice[0] }} บาท</b>
+                      </td></tr>
+                    </table>
+                   </div>
+                </div></td>
+              <td><div class="card" >  
+                    <div class="card-body">
+                        <table width="100%">
+                            <tr><td colspan="2" style="font-size: 15px">กระเทียมดอง</td>
+                                <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod12.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                            </tr>
+                            <tr><td colspan="2" style="font-size: 14px"></td></tr>
+                            <tr><td >
+                                <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[1] == 1)">{{ itemprice[1]  * (1.1) | number : '1.2-2' }} บาท</b>
+                                <b  *ngIf="(upsale[1] == 0)">{{ itemprice[1] }} บาท</b>
+                            </td></tr>
+                        </table>
+                    </div>
+                  </div>
+              </td>
+              <td><div class="card" >
+                    <div class="card-body">
+                        <table width="100%">
+                            <tr><td colspan="2" style="font-size: 15px">ไวไว </td>
+                                <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod13.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                            </tr>
+                            <tr><td colspan="2" style="font-size: 14px">เส้นหมี่อบแห้ง 180 ก.</td></tr>
+                            <tr><td >
+                                <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[2] == 1)">{{ itemprice[2]  * (1.1) | number : '1.2-2'}} บาท</b>
+                                <b  *ngIf="(upsale[2] == 0)">{{ itemprice[2] }} บาท</b>
+                            </td></tr>
+                        </table>
+                    </div>
+                  </div>
+              </td>
+              
+          </tr>
+        </table>
+      <!-- Row 2 -->
+      <div class="row">
+        <table style="width: 97%; margin-left: 15px; ">
+          <tr style="vertical-align:middle; text-align: center;">
+              <td><img class="card-img-top" style="width:120px;  " src="assets/women/prod14.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:120px " src="assets/women/prod15.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:120px; padding: 20px 0 10px 0; " src="assets/women/prod16.png" alt="Card image" ></td>
+           </tr>
+          <tr>
+              <td><div class="card" >
+                  <div class="card-body">
+                      <table width="100%">
+                          <tr><td colspan="2" style="font-size: 15px">แม่ครัว </td>
+                            <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod14.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                          </tr>
+                          <tr><td colspan="2" style="font-size: 14px">ซอสหอยนางรม 600 มล.</td></tr>
+                          <tr><td >
+                              <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[3] == 1)">{{ itemprice[3]  * (1.1) | number : '1.2-2'}} บาท</b>
+                              <b  *ngIf="(upsale[3] == 0)">{{ itemprice[3] }} บาท</b>
+                          </td></tr>
+                      </table>               
+                  </div>
+              </div>
+            </td>
+            <td><div class="card"  >
+                  <div class="card-body" >
+                      <table width="100%">
+                          <tr><td colspan="2" style="font-size: 15px">ทิปโก้  </td>
+                            <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod15.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                          </tr>
+                          <tr><td colspan="2" style="font-size: 14px">น้ำส้มแมนดาริน 100% ขนาด 1,000 มล. </td></tr>
+                          <tr><td >       
+                            <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[4] == 1)">{{ itemprice[4]  * (1.1) | number : '1.2-2'}} บาท</b>
+                            <b  *ngIf="(upsale[4] == 0)">{{ itemprice[4] }} บาท</b>
+                            
+                          </td></tr>
+                      </table>
+                  </div>
+                </div>
+            </td>
+              <td><div class="card"  >
+                  <div class="card-body">
+                   <table width="100%">
+                     <tr><td colspan="2" style="font-size: 15px">ดอยคำ </td>
+                         <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod20.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     </tr>
+                     <tr><td colspan="2" style="font-size: 14px">น้ำบ๊วยเข้มข้น 500 มล.</td></tr>
+                     <tr><td >
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[5] == 1)">{{ itemprice[5]  * (1.1) | number : '1.2-2'}} บาท</b>
+                        <b  *ngIf="(upsale[5] == 0)">{{ itemprice[5] }} บาท</b>
+                     </td></tr>
+                   </table>
+                  </div>
+               </div></td>
+          </tr>
+        </table>
+      </div>
+      <div class="row">
+          <table style="width: 97%; margin-left: 15px; ">
+            <tr style="vertical-align:middle; text-align: center;">
+                <td><img class="card-img-top" style="width:120px" src="assets/women/prod17.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:75px" src="assets/women/prod18.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:165px" src="assets/women/prod19.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:150px" src="assets/women/prod20.png" alt="Card image" ></td>
+            </tr>
+            <tr>
+                 <td><div class="card"  >
+                    <div class="card-body">
+                     <table width="100%">
+                       <tr><td colspan="2" style="font-size: 15px">วุ้นเส้นสด </td>
+                        <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod17.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                       </tr>
+                       <tr><td colspan="2" style="font-size: 14px">ตรากิเลนคู่ 200 ก. </td></tr>
+                       <tr>
+                         <td >
+                           
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[6] == 1)">{{ itemprice[6]  * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[6] == 0)">{{ itemprice[6] }} บาท</b>
+                         </td>
+                       </tr>
+                     </table>
+                    </div>
+                 </div></td> 
+                 <td><div class="card"  >
+                    <div class="card-body">
+                     <table width="100%">
+                       <tr><td colspan="2" style="font-size: 15px">กะปิ </td>
+                           <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod18.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                       </tr>
+                       <tr><td colspan="2" style="font-size: 14px">ตราชั่ง 185 ก.</td></tr>
+                       <tr><td >
+                         
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[7] == 1)">{{ itemprice[7] * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[7] == 0)">{{ itemprice[7] }} บาท</b>
+                       </td></tr>
+                     </table>
+                    </div>
+                 </div></td>
+               <td><div class="card"  >
+                  <div class="card-body">
+                   <table width="100%">
+                     <tr><td colspan="2" style="font-size: 15px">หอมเจียว</td>
+                      <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod19.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     </tr>
+                     <tr><td colspan="2" style="font-size: 14px"> </td></tr>
+                     <tr><td >
+                       
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[8] == 1)">{{ itemprice[8] * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[8] == 0)">{{ itemprice[8] }} บาท</b>
+                     </td></tr>
+                   </table>
+                  </div>
+               </div></td>
+               <td><div class="card"  >
+                  <div class="card-body">
+                   <table width="100%">
+                     <tr><td colspan="2" style="font-size: 15px">เด็กสมบูรณ์  </td>
+                      <td rowspan="3"><img class="card-img-top" src="assets/qrwm/prod16.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     </tr>
+                     <tr><td colspan="2" style="font-size: 14px">ซีอิ๊วขาวสูตร 1,300 มล.  </td></tr>
+                     <tr><td >
+                       
+                        <b style="color:rgb(20, 73, 220);" *ngIf="(upsale[9] == 1)">{{ itemprice[9] * (1.1) | number : '1.2-2' }} บาท</b>
+                        <b  *ngIf="(upsale[9] == 0)">{{ itemprice[9] }} บาท</b>
+                     </td></tr>
+                   </table>
+                  </div>
+               </div></td>
+            </tr>
+          </table>
+        </div> 
+  </div>
+  </div>
+
+  <div>
+
+
 

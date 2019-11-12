@@ -1,0 +1,187 @@
+<div class="container-fluid" >
+ 
+
+  <div class="row" >
+    <div class="col-xl-3" >
+        <img class="img-fluid" style="transform:rotate(90deg)" src="{{image}}"  alt="Card image" >
+        <div class="welcome">
+           <div class="Rectangle-32">ยินดีต้อนรับ</div>
+           <div class="Rectangle-32">คุณ{{ userName }}</div> 
+        </div>
+        <div class="sub-welcome1">
+            เราขอเสนอส่วนลดพิเศษ
+        </div>
+        <div class="sub-welcome2"> 
+            <div *ngIf="churn">60%</div>
+            <div *ngIf="!churn">40%</div>
+        </div>
+        <div class="sub-welcome3">
+            ทุกรายการ จากราคาปกติ ขอให้สนุกกับการเลือกซื้อสินค้าของเราค่ะ
+        </div>
+    </div>
+    
+     
+    <div class="col-xl-9" style="width:50%; background-image: url('assets/Design2/bg_all.png'); background-size: 100%; ">
+      <div style="background-color: #FFFFFF; width: 101%">
+          <img class="card-img-top" style="width:50px; padding-top: 15px" src="assets/Design/Bullet.png" alt="Card image" >
+          <br><span style="font-size:45px; color: #188105;">Shopping Experience Center</span>
+          <img class="card-img-top" style="width:65px; margin-left: 20px" src="assets/Design/busket.png" alt="Card image" >
+          <br>
+          
+      </div>
+      <table style="width: 100%; ">
+          <tr style="vertical-align:middle; text-align: center;">
+              <td><img class="card-img-top" style="width:130px;" src="assets/women/prod11.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:130px;  " src="assets/women/prod12.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:140px; " src="assets/women/prod13.png" alt="Card image" ></td>
+              
+          </tr>
+          <tr>
+              <td><div class="card"  >
+                   <div class="card-body">
+                    <table width="100%"> 
+                      <tr><td colspan="2" style="font-size: 15px">น้ำปลาจั่นเพชร</td>                         
+                          <td rowspan="3"><img class="card-img-top" src="assets/qrcode/1001052.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                      </tr>
+                      <tr><td colspan="2" style="font-size: 14px">ทิพรส น้ำปลาแท้ขวดเพท ขนาด 1500 มล.</td></tr>
+                      <tr><td ><b>{{ itemprice[0] }} บาท</b></td></tr>
+                    </table>
+                   </div>
+                </div></td>
+              <td><div class="card" >  
+                    <div class="card-body">
+                        <table width="100%">
+                            <tr><td colspan="2" style="font-size: 15px">กระเทียมดอง</td>
+                                <td rowspan="3"><img class="card-img-top" src="assets/qrcode/1701063.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                            </tr>
+                            <tr><td colspan="2" style="font-size: 14px">กระเทียมดอง</td></tr>
+                            <tr><td ><b>{{ itemprice[1] }} บาท</b></td></tr>
+                        </table>
+                    </div>
+                  </div>
+              </td>
+              <td><div class="card" >
+                    <div class="card-body">
+                        <table width="100%">
+                            <tr><td colspan="2" style="font-size: 15px">เส้นก๋วยจั๊บ </td>
+                                <td rowspan="3"><img class="card-img-top" src="assets/qrcode/1901012.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                            </tr>
+                            <tr><td colspan="2" style="font-size: 14px">ไวไว เส้นหมี่อบแห้ง 180กรัม</td></tr>
+                            <tr><td ><b>{{ itemprice[2] }} บาท</b></td></tr>
+                        </table>
+                    </div>
+                  </div>
+              </td>
+              
+          </tr>
+        </table>
+      <!-- Row 2 -->
+      <div class="row">
+        <table style="width: 97%; margin-left: 15px; ">
+          <tr style="vertical-align:middle; text-align: center;">
+              <td><img class="card-img-top" style="width:120px;  " src="assets/women/prod14.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:120px " src="assets/women/prod15.png" alt="Card image" ></td>
+              <td><img class="card-img-top" style="width:120px; padding: 20px 0 10px 0; " src="assets/women/prod16.png" alt="Card image" ></td>
+           </tr>
+          <tr>
+              <td><div class="card" >
+                  <div class="card-body">
+                      <table width="100%">
+                          <tr><td colspan="2" style="font-size: 15px">น้ำมันหอยเจ </td>
+                            <td rowspan="3"><img class="card-img-top" src="assets/qrcode/2101572.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                          </tr>
+                          <tr><td colspan="2" style="font-size: 14px">แม่ครัว ซอสหอยนางรม 600 มิลลิลิตร</td></tr>
+                          <tr><td ><b>{{ itemprice[3] }} บาท</b></td></tr>
+                      </table>               
+                  </div>
+              </div>
+            </td>
+            <td><div class="card"  >
+                  <div class="card-body" >
+                      <table width="100%">
+                          <tr><td colspan="2" style="font-size: 15px">มาซาโกะส้ม  </td>
+                            <td rowspan="3"><img class="card-img-top" src="assets/qrcode/3701164.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                          </tr>
+                          <tr><td colspan="2" style="font-size: 14px">ทิปโก้ น้ำส้มแมนดาริน 100% ขนาด 1,000 มิลลิลิตร </td></tr>
+                          <tr><td ><b>{{ itemprice[4] }} บาท</b></td></tr>
+                      </table>
+                  </div>
+                </div>
+            </td>
+              <td><div class="card"  >
+                  <div class="card-body">
+                   <table width="100%">
+                     <tr><td colspan="2" style="font-size: 15px">บ๊วยดอง </td>
+                         <td rowspan="3"><img class="card-img-top" src="assets/qrcode/4101062.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     </tr>
+                     <tr><td colspan="2" style="font-size: 14px">ดอยคำ น้ำบ๊วยเข้มข้น 500มล.</td></tr>
+                     <tr><td ><b>{{ itemprice[5] }} บาท</b></td></tr>
+                   </table>
+                  </div>
+               </div></td>
+          </tr>
+        </table>
+      </div>
+      <div class="row">
+          <table style="width: 97%; margin-left: 15px; ">
+            <tr style="vertical-align:middle; text-align: center;">
+                <td><img class="card-img-top" style="width:120px" src="assets/women/prod17.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:100px" src="assets/women/prod18.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:125px" src="assets/women/prod19.png" alt="Card image" ></td>
+                <td><img class="card-img-top" style="width:150px" src="assets/women/prod20.png" alt="Card image" ></td>
+            </tr>
+            <tr>
+                 <td><div class="card"  >
+                    <div class="card-body">
+                     <table width="100%">
+                       <tr><td colspan="2" style="font-size: 15px">วุ้นเส้นสด ตรากิเลน </td>
+                        <td rowspan="3"><img class="card-img-top" src="assets/qrcode/4104376.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                       </tr>
+                       <tr><td colspan="2" style="font-size: 14px">วุ้นเส้นสด กิเลนคู่ 200 กรัม </td></tr>
+                       <tr>
+                         <td ><b>{{ itemprice[7] }} บาท</b></td>
+                       </tr>
+                     </table>
+                    </div>
+                 </div></td>
+                 <td><div class="card"  >
+                    <div class="card-body">
+                     <table width="100%">
+                       <tr><td colspan="2" style="font-size: 15px">กะปิ </td>
+                           <td rowspan="3"><img class="card-img-top" src="assets/qrcode/4105003.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                       </tr>
+                       <tr><td colspan="2" style="font-size: 14px">ตราชั่ง กะปิ 185 กรัม</td></tr>
+                       <tr><td ><b>{{ itemprice[8] }} บาท</b></td></tr>
+                     </table>
+                    </div>
+                 </div></td>
+               <td><div class="card"  >
+                  <div class="card-body">
+                   <table width="100%">
+                     <tr><td colspan="2" style="font-size: 15px">หอมเจียว</td>
+                      <td rowspan="3"><img class="card-img-top" src="assets/qrcode/5604004.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     </tr>
+                     <tr><td colspan="2" style="font-size: 14px">หอมเจียว </td></tr>
+                     <tr><td ><b> {{ itemprice[9] }} บาท</b></td></tr>
+                   </table>
+                  </div>
+               </div></td>
+               <td><div class="card"  >
+                  <div class="card-body">
+                   <table width="100%">
+                     <tr><td colspan="2" style="font-size: 15px">ซีอิ๊วขาว  </td>
+                      <td rowspan="3"><img class="card-img-top" src="assets/qrcode/7602156.png" alt="Card image" style="width:50px;height:50px;  text-align: right"></td>
+                     </tr>
+                     <tr><td colspan="2" style="font-size: 14px">เด็กสมบูรณ์ ซีอิ๊วขาวสูตร 1 300 มล.  </td></tr>
+                     <tr><td ><b>{{ itemprice[10] }} บาท</b></td></tr>
+                   </table>
+                  </div>
+               </div></td>
+            </tr>
+          </table>
+        </div> 
+  </div>
+  </div>
+
+
+

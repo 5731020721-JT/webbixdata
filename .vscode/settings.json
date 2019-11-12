@@ -2,6 +2,6 @@
     "appService.zipIgnorePattern": [
         ".vscode{,/**}"
     ],
-    "appService.deploySubpath": "",
-    "appService.defaultWebAppToDeploy": "/subscriptions/2254eb17-8c99-43a9-920b-dd9e4e375d3e/resourceGroups/1team-azure/providers/Microsoft.Web/sites/s1bixdata"
+    "appService.deploySubpath": "dist\\WebBixData",
+    "appService.defaultWebAppToDeploy": ""
 }

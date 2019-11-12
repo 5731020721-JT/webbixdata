@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve  --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -26,6 +26,7 @@
     "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
     "ngx-bootstrap": "^5.0.0",
+    "ngx-countdown": "^2.0.4",
     "rxjs": "6.0.0",
     "rxjs-compat": "^6.5.2",
     "zone.js": "^0.8.26"
